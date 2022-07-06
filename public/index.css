@@ -1,0 +1,49 @@
+.top-section{
+    position: relative;
+    width: 100%;
+}
+
+.carousel{
+    position: absolute;
+    width: 100%;
+}
+
+.carousel img{
+    height: 80vh;
+}
+
+.top-section-content{
+    position: absolute;
+    width: 100%;
+    color: white;
+    top: 35vh;
+    text-align: center;
+}
+
+.modal-body form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.modal-body form input{
+    height: 2.5rem;
+    border-radius: 6px;
+    border: 1px solid grey;
+}
+
+.display-data{
+    position: absolute;
+    top: 90vh;
+}
+
+.display-table table{
+    width: 80rem;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.display-table td,
+.display-table th{
+    border: 1px solid black;
+}

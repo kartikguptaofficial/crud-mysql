@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+    crossorigin="anonymous">
+    <% if(data) { %>
+        <% data.map((item) => { %>
+    <title><%= item.product_name %> | EDIT</title>
+    <style>
+        .edit-form{
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            margin: 2rem auto;
+            gap: 0.5rem;
+        }
+        .edit-form input{
+            height: 2.5rem;
+            border-radius: 6px;
+            border: 1px solid grey;
+        }
+        .edit-form button{
+            height: 2.5rem;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <%- include('./navbar.js') %>
+
+            <form action="/edited/<%= item.id %>" method="POST" class="edit-form">
+                <label for="product_name">Product Name</label>
+                <input type="text" name="product_name" value="<%= item.product_name %>" id="product_name">
+                <label for="product_brand">Brand</label>
+                <input type="text" name="product_brand" value="<%= item.product_brand %>" id="product_brand">
+                <label for="mrp">MRP</label>
+                <input type="text" name="mrp" value="<%= item.mrp %>" id="mrp">
+                <label for="price">Price</label>
+                <input type="text" name="price" value="<%= item.price %>" id="price">
+                <label for="discount">Discount</label>
+                <input type="text" name="discount" value="<%= item.discount %>" id="discount">
+                <button type="submit" class="btn btn-danger">Update Product</button>
+            </form>
+        <% }) %>
+    <% } %>
+
+
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+</body>
+</html>

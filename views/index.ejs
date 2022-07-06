@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+        crossorigin="anonymous">
+        <link rel="stylesheet" href="/index.css">
+        <title>CRUD | Project by Kartik Gupta</title>
+
+    </head>
+    <body>
+
+        <%- include('./navbar.js') %>
+
+            <div class="top-section">
+
+                <div id="carouselExampleInterval" class="carousel slide"
+                    data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active"
+                            data-bs-interval="2000">
+                            <img
+                                src="https://media.istockphoto.com/photos/relational-database-tables-with-server-room-and-datacenter-background-picture-id1393858554?b=1&k=20&m=1393858554&s=612x612&w=0&h=Dv7yxy4FOek-3TKuoZitMkiDIwFhT52EkbUJd9o9UTE="class="d-block
+                                w-100" alt="...">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <img src="https://images.pexels.com/photos/1089438/pexels-photo-1089438.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <img src="https://images.pexels.com/photos/4383298/pexels-photo-4383298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button"
+                        data-bs-target="#carouselExampleInterval"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"
+                            aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button"
+                        data-bs-target="#carouselExampleInterval"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon"
+                            aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
+                <div class="top-section-content">
+                    <h1>Add your product here 👇</h1>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Add Product
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title"
+                                        id="exampleModalLabel" style="color: black;">Add details of your product</h5>
+                                    <button type="button" class="btn-close"
+                                        data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/post" method="POST">
+                                        <input type="text" name="product_name" placeholder="Product Name">
+                                        <input type="text" name="product_brand" placeholder="Product Brand">
+                                        <input type="number" name="mrp" placeholder="Product MRP">
+                                        <input type="number" name="price" placeholder="Product Price">
+                                        <input type="number" name="discount" placeholder="Product Discount">
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn
+                                                btn-dark" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn
+                                                btn-danger" data-bs-dismiss="modal">Save changes</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <section class="display-data">
+                <h2>Your Products</h2>
+
+                <div class="display-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Barcode</th>
+                                <th>Name</th>
+                                <th>Brand</th>
+                                <th>MRP</th>
+                                <th>Price</th>
+                                <th>Discount</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <% if(data) { %>
+                            <% data.map((item)=> { %>
+                                <tbody>
+                                    <tr>
+                                        <td><%= item.id %></td>
+                                        <td><%= item.product_name %></td>
+                                        <td><%= item.product_brand %></td>
+                                        <td><%= item.mrp %></td>
+                                        <td><%= item.price %></td>
+                                        <td><%= item.discount %></td>
+                                        <td><a href="edit/<%= item.id %>">Edit</a>
+                                            <a href="delete/<%= item.id %>">Delete</a></td>
+                                    </tr>
+                                </tbody>
+                                <% }) %>
+                            </table>
+                        </div>
+                <% } %>
+
+            </section>
+        
+        
+        
+        
+            <script
+                src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+                crossorigin="anonymous"></script>
+    </body>
+</html>
