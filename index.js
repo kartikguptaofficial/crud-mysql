@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, "/public")))
 app.get("/", (req,res) => {
     const data = db.query("SELECT * FROM crud", (err,data) => {
         if(err) {console.log(err)}
-        else{
+        else{ 
             res.render('index', {data:data})
         }
     })
